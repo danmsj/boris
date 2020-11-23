@@ -1,14 +1,11 @@
 package br.com.boris.modelo;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +22,7 @@ public class Fornecedor {
 	private Long id;
 	private String nome;
 	private String cnpj;
+	@OneToOne
 	private Endereco endereco;
 
 }

@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +26,10 @@ public class Venda {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Produto produtoVenda;
+	@OneToMany
+	private List<Produto> produtoVenda;
+	@OneToOne
+	private Fornecedor fornecedor;
 	@Enumerated(EnumType.STRING)
 	private StatusTransacao statusTransacao;
 	private LocalDateTime dataAtualizacao;

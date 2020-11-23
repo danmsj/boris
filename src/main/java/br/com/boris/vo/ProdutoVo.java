@@ -1,17 +1,13 @@
-package br.com.boris.modelo;
+package br.com.boris.vo;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
+import br.com.boris.modelo.CorDoProduto;
+import br.com.boris.modelo.Fornecedor;
+import br.com.boris.modelo.Produto;
+import br.com.boris.modelo.StatusDeDisponibilidadeProduto;
+import br.com.boris.modelo.TamanhoDoProduto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,23 +17,21 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Produto {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProdutoVo {
+
 	private Long id;
 	private String nome;
-	@OneToMany(mappedBy = "produto")
 	private List<CorDoProduto> corDoProduto;
-	@OneToMany(mappedBy = "produto")
 	private List<TamanhoDoProduto> tamanhoDoProduto;
 	private double valorCompra;
 	private double valorVenda;
-	@ManyToOne
 	private Fornecedor fornecedor;
-	@Enumerated(EnumType.STRING)
 	private StatusDeDisponibilidadeProduto status;
 	private String localAtual;
 	private String localAnterior;
 	private LocalDateTime dataAtualizacao;
-		
+	
+	public static ProdutoVo converter(Produto produtos) {
+		return produtos.map(ProdutoVo::new);
+	}
 }
