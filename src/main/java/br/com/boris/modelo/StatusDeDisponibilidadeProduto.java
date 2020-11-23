@@ -1,0 +1,12 @@
+package br.com.boris.modelo;
+
+public enum StatusDeDisponibilidadeProduto {
+	
+	DISPONIVEL,
+	NAO_DISPONIVEL,
+	SOLICITADO_REABASTECIMENTO,
+	FORA_DE_CATALOGO,
+	NEGOCIANDO_COM_FORNECEDOR,
+	FORNECEDOR_NAO_PRODUZ_MAIS;
+	
+}
